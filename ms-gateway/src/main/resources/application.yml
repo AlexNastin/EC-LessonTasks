@@ -1,0 +1,32 @@
+server:
+  port: 8765
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+zuul:
+  routes:
+    catalog-service:
+        path: /catalog/**
+        serviceId: catalog-service
+        stripPrefix: false
+        sensitiveHeaders:
+    inventory-service:
+        path: /inventory/**
+        serviceId: inventory-service
+        stripPrefix: false
+        sensitiveHeaders:
