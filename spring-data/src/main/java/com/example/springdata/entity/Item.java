@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 public class Item extends BaseEntity{
 
     @NotNull
-    protected String name;
+    private String name;
 
     @ManyToOne
     private User user;

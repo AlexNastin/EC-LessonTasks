@@ -1,6 +1,7 @@
 package com.example.springdata.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -11,8 +12,8 @@ public class Address extends BaseEntity{
     @NotNull
     private String city;
 
-//    @OneToOne
-//    private User user;
+    @OneToOne
+    private User user;
 
     protected Address() {
     }

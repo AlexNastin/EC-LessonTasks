@@ -1,6 +1,5 @@
 package com.example.springdata.controller;
 
-import com.example.springdata.entity.ErrorMessage;
 import com.example.springdata.entity.User;
 import com.example.springdata.exception.NotFoundException;
 import com.example.springdata.service.UserService;
@@ -13,14 +12,22 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/users")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/{userId}")
     public ResponseEntity<User> findUser(@PathVariable("userId") Integer id) throws NotFoundException {
         User user = userService.findUser(id);
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-
+    @PostMapping("/test-save")
+    public ResponseEntity<User> findUser(@RequestBody User user) throws NotFoundException {
+        userService.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }

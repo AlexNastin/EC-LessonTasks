@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   datasource:
-    url: jdbc:postgresql://192.168.99.100:5432/ec_jpa_hibernate
+    url: jdbc:postgresql://localhost:5432/ec_sb_data
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
